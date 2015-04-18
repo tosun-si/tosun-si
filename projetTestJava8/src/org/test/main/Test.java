@@ -37,6 +37,7 @@ public class Test {
 		personne3.setAge(19);
 
 		final String zizou = "";
+		final String lolo = "";
 
 		final Personne personne4 = new Personne();
 		personne4.setNom("Lopez");
