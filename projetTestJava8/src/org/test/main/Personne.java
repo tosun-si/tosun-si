@@ -8,40 +8,53 @@ package org.test.main;
  */
 public class Personne {
 
-	private String nom;
-	private String prenom;
-	private Integer age;
-	private String civilite;
+  private String nom;
+  private String prenom;
+  private Integer age;
+  private String civilite;
+  private Adresse adresse;
 
-	public String getNom() {
-		return nom;
-	}
+  public Personne() {
+    this.adresse = new Adresse();
+  }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+  public String getNom() {
+    return nom;
+  }
 
-	public String getPrenom() {
-		return prenom;
-	}
+  public void setNom(String nom) {
+    this.nom = nom;
+  }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+  public String getPrenom() {
+    return prenom;
+  }
 
-	public Integer getAge() {
-		return age;
-	}
+  public void setPrenom(String prenom) {
+    this.prenom = prenom;
+  }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+  public Integer getAge() {
+    return age;
+  }
 
-	public String getCivilite() {
-		return civilite;
-	}
+  public void setAge(Integer age) {
+    this.age = age;
+  }
 
-	public void setCivilite(String civilite) {
-		this.civilite = civilite;
-	}
+  public String getCivilite() {
+    return civilite;
+  }
+
+  public void setCivilite(String civilite) {
+    this.civilite = civilite;
+  }
+
+  public Adresse getAdresse() {
+    return adresse;
+  }
+
+  public void setAdresse(Adresse adresse) {
+    this.adresse = adresse;
+  }
 }
