@@ -3,6 +3,8 @@
  */
 package org.test.main;
 
+import java.util.StringJoiner;
+
 /**
  * @author Mazlum
  */
@@ -56,5 +58,10 @@ public class Personne {
 
   public void setAdresse(Adresse adresse) {
     this.adresse = adresse;
+  }
+
+  @Override
+  public String toString() {
+    return new StringJoiner(" ").add(nom).add(prenom).toString();
   }
 }

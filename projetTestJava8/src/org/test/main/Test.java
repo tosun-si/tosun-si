@@ -142,8 +142,18 @@ public class Test {
 
     personsAsMap.forEach((key, value) -> System.out.println(new StringJoiner(" and ").add(key).add(
         value.getPrenom())));
-    
-    //
-    
+
+    // Test collector.
+    final Map<Integer, List<Personne>> personsByAge =
+        persons.stream().collect(Collectors.groupingBy(Personne::getAge));
+
+    System.out.println("Collector test, persons by age : \n");
+    personsByAge.forEach((key, value) -> System.out.println(new StringJoiner(" => ").add(
+        value.toString()).add(key.toString())));
+
+    final Map<Integer, String> personsStrByAge =
+        persons.stream().collect(
+            Collectors.groupingBy(Personne::getAge,
+                Collectors.mapping(Personne::getPrenom, Collectors.joining(","))));
   }
 }

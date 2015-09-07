@@ -59,7 +59,16 @@ public class TestFunction {
 
     final BiFunction<String, String, String> bynaryOperation2 = (x, y) -> x + y;
 
-    // And then.
-    // bynaryOperation.andThen(bynaryOperation2);
+    // Test with new functional interface.
+    final LoggerTestFunction logger =
+        (message, severity) -> System.out
+            .println("Test new functinal interfaces that represent a Logger => Message : "
+                + message + " / Severity : " + severity);
+
+    // logger.log("PSG", "INFO");
+
+    logger.filter(m -> m.startsWith("P")).log("PSG", "INFO");
+
+    logger.logWithFilter(m -> m.startsWith("P"), "PSG", "INFO");
   }
 }

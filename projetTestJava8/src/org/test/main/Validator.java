@@ -23,7 +23,7 @@ public class Validator<T> {
 
   public Validator<T> validate(Predicate<? super T> predicate, final String message) {
     if (!predicate.test(t)) {
-      exceptions.add(new IllegalStateException());
+      exceptions.add(new IllegalStateException(message));
     }
 
     return this;
