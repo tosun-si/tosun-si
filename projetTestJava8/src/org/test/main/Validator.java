@@ -29,8 +29,8 @@ public class Validator<T> {
     return this;
   }
 
-  public <U> Validator<T> validate(Function<T, U> projection, Predicate<? super U> predicate,
-      final String message) {
+  public <U> Validator<T> validate(Function<? super T, ? extends U> projection,
+      Predicate<? super U> predicate, final String message) {
 
     return validate(projection.andThen(predicate::test)::apply, message);
   }
@@ -41,7 +41,8 @@ public class Validator<T> {
     personne.setNom("Zizou");
     personne.setAge(15);
 
-    Validator.of(personne).validate(p -> p.getNom() != null, "Name of user must not be empty")
-        .validate(p -> p.getAge() > 10, "Age must be greather than 10");
+    Validator.of(personne)
+        .validate(Personne::getNom, nom -> nom != null, "Name of user must not be empty")
+        .validate(Personne::getAge, age -> age > 10, "Age must be greather than 10");
   }
 }
