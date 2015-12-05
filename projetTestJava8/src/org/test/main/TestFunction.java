@@ -3,8 +3,11 @@ package org.test.main;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 
 /**
@@ -65,10 +68,24 @@ public class TestFunction {
             .println("Test new functinal interfaces that represent a Logger => Message : "
                 + message + " / Severity : " + severity);
 
-    // logger.log("PSG", "INFO");
-
     logger.filter(m -> m.startsWith("P")).log("PSG", "INFO");
 
     logger.logWithFilter(m -> m.startsWith("P"), "PSG", "INFO");
+
+    // Test chain function.
+
+    // Function.
+    final Function<Boolean, Boolean> function = s -> Boolean.valueOf(s);
+
+    final Function<Boolean, Stream<Boolean>> function2 = b -> Stream.of(b);
+
+    // Predicate.
+    final Predicate<String> predicate = b -> b.equals("true");
+
+    final Consumer<Boolean> consumer =
+        c -> System.out.println("Test chain predicate + consumer. Result : " + c);
+
+    // Chain function and predicate.
+    function.compose(predicate::test).andThen(function2).apply("true");
   }
 }

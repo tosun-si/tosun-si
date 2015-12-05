@@ -21,6 +21,10 @@ public class Validator<T> {
     return new Validator<>(t);
   }
 
+  public List<Throwable> get() {
+    return exceptions;
+  }
+
   public Validator<T> validate(Predicate<? super T> predicate, final String message) {
     if (!predicate.test(t)) {
       exceptions.add(new IllegalStateException(message));

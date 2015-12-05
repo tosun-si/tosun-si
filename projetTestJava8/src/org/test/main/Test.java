@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -47,16 +48,29 @@ public class Test {
     personne4.setCivilite("MME");
     personne4.setAge(20);
 
+    final Personne personne5 = new Personne();
+    personne5.setNom("Beckham");
+    personne5.setPrenom("David");
+    personne5.setCivilite("MR");
+    personne5.setAge(20);
+
+    final Personne personne6 = new Personne();
+    personne6.setNom("Cavani");
+    personne6.setPrenom("Edinson");
+    personne6.setCivilite("MR");
+    personne6.setAge(19);
+
     final List<Personne> persons = new ArrayList<>();
     persons.add(personne1);
     persons.add(personne2);
     persons.add(personne3);
     persons.add(personne4);
+    persons.add(personne5);
+    persons.add(personne6);
 
     // Liste de noms des personne ayant un age superieur a 20.
-    final List<String> personsNamesWithFilterAge =
-        persons.parallelStream().filter(p -> p.getAge() > 20).map(Personne::getNom)
-            .collect(Collectors.toList());
+    final List<String> personsNamesWithFilterAge = persons.parallelStream()
+        .filter(p -> p.getAge() > 20).map(Personne::getNom).collect(Collectors.toList());
 
     System.out.println("Personnes avec age superieur a 20 " + personsNamesWithFilterAge + "\n");
 
@@ -68,22 +82,21 @@ public class Test {
     final boolean isPersonsContainsIbrahimovic =
         persons.stream().anyMatch(p -> p.getNom().equals("Ibrahimovic"));
 
-    System.out
-        .println("Test si la liste de personne contient une personne avec le Nom = Ibrahimovic. Resultat : "
+    System.out.println(
+        "Test si la liste de personne contient une personne avec le Nom = Ibrahimovic. Resultat : "
             + isPersonsContainsIbrahimovic + "\n");
 
     // Test si toutes les civilites sont egales a MR.
     final boolean isAllCivilitiesEqualsMR =
         persons.stream().allMatch(p -> p.getCivilite().equals("MR"));
 
-    System.out
-        .println("Test si les civilites de la liste de personne sont toutes egales a MR. Resultat : "
+    System.out.println(
+        "Test si les civilites de la liste de personne sont toutes egales a MR. Resultat : "
             + isAllCivilitiesEqualsMR + "\n");
 
     // Test order by par nom.
-    final List<Personne> personsOrderedByName =
-        persons.stream().sorted((p1, p2) -> p1.getNom().compareTo(p2.getNom()))
-            .collect(Collectors.toList());
+    final List<Personne> personsOrderedByName = persons.stream()
+        .sorted((p1, p2) -> p1.getNom().compareTo(p2.getNom())).collect(Collectors.toList());
 
     // Test le nombre de personne ayant une civilite egale a MME.
     final Long numberOfMme = persons.stream().filter(p -> p.getCivilite().equals("MME")).count();
@@ -101,9 +114,8 @@ public class Test {
         .filter(p -> p != null && p.getPrenom().toLowerCase().equals("Jenifer".toLowerCase()))
         .collect(Collectors.toList());
 
-    final Boolean isExistJenifer =
-        persons.stream().anyMatch(
-            p -> p != null && p.getPrenom().toLowerCase().equals("Jenifer".toLowerCase()));
+    final Boolean isExistJenifer = persons.stream()
+        .anyMatch(p -> p != null && p.getPrenom().toLowerCase().equals("Jenifer".toLowerCase()));
 
     // Names list.
     persons.stream().map(Personne::getNom).collect(Collectors.toList())
@@ -120,12 +132,8 @@ public class Test {
     persons.stream().findFirst().orElseThrow(IllegalStateException::new);
 
     // Find first with if present.
-    persons
-        .stream()
-        .findAny()
-        .ifPresent(
-            p -> System.out.println(new StringJoiner(" : ").add("Optional if present test").add(
-                p.getNom())));
+    persons.stream().findAny().ifPresent(p -> System.out
+        .println(new StringJoiner(" : ").add("Optional if present test").add(p.getNom())));
 
     // Test maps.
     final Map<String, Personne> personsAsMap = new HashMap<>();
@@ -140,20 +148,24 @@ public class Test {
 
     personsAsMap.getOrDefault("Nono", new Personne());
 
-    personsAsMap.forEach((key, value) -> System.out.println(new StringJoiner(" and ").add(key).add(
-        value.getPrenom())));
+    personsAsMap.forEach((key, value) -> System.out
+        .println(new StringJoiner(" and ").add(key).add(value.getPrenom())));
 
     // Test collector.
     final Map<Integer, List<Personne>> personsByAge =
         persons.stream().collect(Collectors.groupingBy(Personne::getAge));
 
     System.out.println("Collector test, persons by age : \n");
-    personsByAge.forEach((key, value) -> System.out.println(new StringJoiner(" => ").add(
-        value.toString()).add(key.toString())));
+    personsByAge.forEach((key, value) -> System.out
+        .println(new StringJoiner(" => ").add(value.toString()).add(key.toString())));
 
     final Map<Integer, String> personsStrByAge =
-        persons.stream().collect(
-            Collectors.groupingBy(Personne::getAge,
-                Collectors.mapping(Personne::getPrenom, Collectors.joining(","))));
+        persons.stream().collect(Collectors.groupingBy(Personne::getAge,
+            Collectors.mapping(Personne::getPrenom, Collectors.joining(","))));
+
+    final Map<String, Personne> personsToName =
+        persons.stream().collect(Collectors.toMap(Personne::getNom, Function.identity()));
+
+    System.out.println(personsAsMap);
   }
 }
