@@ -115,7 +115,7 @@ public class TestFunction {
 
   private static void dispayPersonInfo(final Person person,
       final Function<Person, String> personToString, final Consumer<String> consumerString) {
-    consumerString.accept(new StringJoiner(" : ").add("Compose function with predicate")
+    consumerString.accept(new StringJoiner(" : ").add("Compose function with consumer")
         .add(personToString.apply(person)).toString());
   }
 }
