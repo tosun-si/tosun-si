@@ -41,12 +41,12 @@ public class Validator<T> {
 
   public static void main(String[] args) {
 
-    final Personne personne = new Personne();
+    final Person personne = new Person();
     personne.setNom("Zizou");
     personne.setAge(15);
 
     Validator.of(personne)
-        .validate(Personne::getNom, nom -> nom != null, "Name of user must not be empty")
-        .validate(Personne::getAge, age -> age > 10, "Age must be greather than 10");
+        .validate(Person::getNom, nom -> nom != null, "Name of user must not be empty")
+        .validate(Person::getAge, age -> age > 10, "Age must be greather than 10");
   }
 }

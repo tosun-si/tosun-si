@@ -1,6 +1,7 @@
 package org.test.main;
 
 import java.util.Optional;
+import java.util.StringJoiner;
 import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
@@ -8,6 +9,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
+
 
 
 /**
@@ -29,16 +31,18 @@ public class TestFunction {
     System.out.println("Function compose test : " + functionCompose.equals(18));
 
     // Test optional.
-    final Personne personne = new Personne();
-    personne.setNom("Zizou");
+    final Person person = new Person();
+    person.setNom("Zizou");
+    person.setPrenom("Raul");
+    person.setAge(20);
 
-    final Adresse adresse = new Adresse();
-    adresse.setAdress("rue de Paris");
-    adresse.setZipCode("75015");
+    final Adress adress = new Adress();
+    adress.setAdress("rue de Paris");
+    adress.setZipCode("75015");
 
     // Optional test.
-    final Optional<Personne> optinalPersonne = Optional.of(personne);
-    final Optional<Adresse> optionalAdresse = Optional.of(adresse);
+    final Optional<Person> optinalPersonne = Optional.of(person);
+    final Optional<Adress> optionalAdresse = Optional.of(adress);
     optinalPersonne.flatMap(a -> optionalAdresse).ifPresent(System.out::println);
 
     // Unary operation test.
@@ -53,8 +57,8 @@ public class TestFunction {
 
     // Binary function test with reference method.
     final BiFunction<Integer, Integer, String> binaryFunctionWithReferenceMethod = Utils::valueOf;
-    System.out.println("Binary function with reference method : "
-        + binaryFunctionWithReferenceMethod.apply(1, 1));
+    System.out.println(
+        "Binary function with reference method : " + binaryFunctionWithReferenceMethod.apply(1, 1));
 
     // Binary operation.
     final BinaryOperator<String> bynaryOperation = Utils::valueOf;
@@ -63,10 +67,9 @@ public class TestFunction {
     final BiFunction<String, String, String> bynaryOperation2 = (x, y) -> x + y;
 
     // Test with new functional interface.
-    final LoggerTestFunction logger =
-        (message, severity) -> System.out
-            .println("Test new functinal interfaces that represent a Logger => Message : "
-                + message + " / Severity : " + severity);
+    final LoggerTestFunction logger = (message, severity) -> System.out
+        .println("Test new functinal interfaces that represent a Logger => Message : " + message
+            + " / Severity : " + severity);
 
     logger.filter(m -> m.startsWith("P")).log("PSG", "INFO");
 
@@ -87,5 +90,32 @@ public class TestFunction {
 
     // Chain function and predicate.
     function.compose(predicate::test).andThen(function2).apply("true");
+
+    final Predicate<Person> predicate1 = p -> p.getNom().equals("Zizou");
+    final Predicate<Person> predicate2 = p -> p.getAge().equals("20");
+
+    final Predicate<Person> finalPredicate = predicate1.and(predicate2);
+
+    final boolean predicateChainResult = TestChainPredicate.of(person)
+        .add(TestChainPredicate.Type.AND, p -> p.getNom().equals("Zizouu"))
+        .add(TestChainPredicate.Type.OR, p -> p.getAge() == 20).build();
+
+    System.out.println("Predicate chain result : " + predicateChainResult);
+
+    // Tests compose function with consumer. Behavior parameterization case 1.
+    dispayPersonInfo(person,
+        p -> new StringJoiner(", ").add(p.getNom()).add(p.getPrenom()).toString(),
+        System.out::println);
+
+    // Tests compose function with consumer. Behavior parameterization case 2.
+    dispayPersonInfo(person,
+        p -> new StringJoiner(", ").add(p.getPrenom()).add(p.getAge().toString()).toString(),
+        System.out::println);
+  }
+
+  private static void dispayPersonInfo(final Person person,
+      final Function<Person, String> personToString, final Consumer<String> consumerString) {
+    consumerString.accept(new StringJoiner(" : ").add("Compose function with predicate")
+        .add(personToString.apply(person)).toString());
   }
 }

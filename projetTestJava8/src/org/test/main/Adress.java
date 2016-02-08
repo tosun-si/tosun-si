@@ -1,6 +1,6 @@
 package org.test.main;
 
-public class Adresse {
+public class Adress {
 
   private String zipCode;
   private String adress;
