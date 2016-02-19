@@ -10,30 +10,30 @@ import java.util.StringJoiner;
  */
 public class Person {
 
-  private String nom;
-  private String prenom;
+  private String lastName;
+  private String firstName;
   private Integer age;
-  private String civilite;
-  private Adress adresse;
+  private String civility;
+  private Adress adress;
 
   public Person() {
-    this.adresse = new Adress();
+    this.adress = new Adress();
   }
 
-  public String getNom() {
-    return nom;
+  public String getLastName() {
+    return lastName;
   }
 
-  public void setNom(String nom) {
-    this.nom = nom;
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
   }
 
-  public String getPrenom() {
-    return prenom;
+  public String getFirstName() {
+    return firstName;
   }
 
-  public void setPrenom(String prenom) {
-    this.prenom = prenom;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
   public Integer getAge() {
@@ -44,24 +44,24 @@ public class Person {
     this.age = age;
   }
 
-  public String getCivilite() {
-    return civilite;
+  public String getCivility() {
+    return civility;
   }
 
-  public void setCivilite(String civilite) {
-    this.civilite = civilite;
+  public void setCivility(String civility) {
+    this.civility = civility;
   }
 
-  public Adress getAdresse() {
-    return adresse;
+  public Adress getAdress() {
+    return adress;
   }
 
-  public void setAdresse(Adress adresse) {
-    this.adresse = adresse;
+  public void setAdress(Adress adress) {
+    this.adress = adress;
   }
 
   @Override
   public String toString() {
-    return new StringJoiner(" ").add(nom).add(prenom).toString();
+    return new StringJoiner(" ").add(lastName).add(firstName).toString();
   }
 }

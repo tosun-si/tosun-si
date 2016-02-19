@@ -6,47 +6,90 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
+ * Monad that allows to compose and chain operation in order to validate many field of given object
+ * {@code <T>}.
+ * 
  * @author Mazlum
  */
 public class Validator<T> {
 
-  private final T t;
+  // Fields.
+
+  private final T object;
   private final List<Throwable> exceptions = new ArrayList<>();
 
-  public Validator(T t) {
-    this.t = t;
+  /**
+   * Constructor with given object.
+   * 
+   * @param object current object
+   */
+  public Validator(T object) {
+    this.object = object;
   }
 
-  public static <T> Validator<T> of(T t) {
-    return new Validator<>(t);
+  /**
+   * Static factory method that allows to create new {@link Validator} instance, with given object.
+   * 
+   * @param object current object
+   * @return {@link Validator} with object
+   */
+  public static <T> Validator<T> of(T object) {
+    return new Validator<>(object);
   }
 
+  /**
+   * Gets exceptions, if it exists validation errors.
+   * 
+   * @return {@link Throwable} exception if it exists validation errors
+   */
   public List<Throwable> get() {
     return exceptions;
   }
 
+  /**
+   * Allows to validate a field, with {@link Predicate}.
+   * 
+   * @param predicate current predicate
+   * @param message message to add in exception list, if current {@link Predicate} returns false
+   * @return current {@link Validator}
+   */
   public Validator<T> validate(Predicate<? super T> predicate, final String message) {
-    if (!predicate.test(t)) {
+    if (!predicate.test(object)) {
       exceptions.add(new IllegalStateException(message));
     }
 
     return this;
   }
 
+  /**
+   * Allows to validate a projection that contains current field to validate. Projection is chained
+   * with a {@link Predicate} that matches with function return field.
+   * 
+   * @param projection current projection
+   * @param predicate current predicate
+   * @param message current message to add in exception list, if current {@link Predicate} returns
+   *        false
+   * @return current {@link Validator}
+   */
   public <U> Validator<T> validate(Function<? super T, ? extends U> projection,
       Predicate<? super U> predicate, final String message) {
 
     return validate(projection.andThen(predicate::test)::apply, message);
   }
 
+  /**
+   * Mains for tests.
+   * 
+   * @param args args
+   */
   public static void main(String[] args) {
 
     final Person personne = new Person();
-    personne.setNom("Zizou");
+    personne.setLastName("Zizou");
     personne.setAge(15);
 
     Validator.of(personne)
-        .validate(Person::getNom, nom -> nom != null, "Name of user must not be empty")
+        .validate(Person::getLastName, nom -> nom != null, "Name of user must not be empty")
         .validate(Person::getAge, age -> age > 10, "Age must be greather than 10");
   }
 }

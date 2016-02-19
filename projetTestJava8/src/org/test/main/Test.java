@@ -4,6 +4,7 @@
 package org.test.main;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,66 +22,66 @@ public class Test {
    * @param args
    */
   public static void main(String[] args) {
-    final Person personne1 = new Person();
-    personne1.setNom("Zizou");
-    personne1.setPrenom("Mazizou");
-    personne1.setCivilite("MR");
-    personne1.setAge(30);
+    final Person person1 = new Person();
+    person1.setLastName("Zizou");
+    person1.setLastName("Mazizou");
+    person1.setCivility("MR");
+    person1.setAge(30);
 
-    final Person personne2 = new Person();
-    personne2.setNom("Ronaldo");
-    personne2.setPrenom("Cristiano");
-    personne2.setCivilite("MR");
-    personne2.setAge(20);
+    final Person person2 = new Person();
+    person2.setLastName("Ronaldo");
+    person2.setLastName("Cristiano");
+    person2.setCivility("MR");
+    person2.setAge(20);
 
-    final Person personne3 = new Person();
-    personne3.setNom("Ibrahimovic");
-    personne3.setPrenom("Zlatan");
-    personne3.setCivilite("MR");
-    personne3.setAge(19);
+    final Person person3 = new Person();
+    person3.setLastName("Ibrahimovic");
+    person3.setLastName("Zlatan");
+    person3.setCivility("MR");
+    person3.setAge(19);
 
     final String zizou = "";
     final String lolo = "";
 
-    final Person personne4 = new Person();
-    personne4.setNom("Lopez");
-    personne4.setPrenom("Jenifer");
-    personne4.setCivilite("MME");
-    personne4.setAge(20);
+    final Person person4 = new Person();
+    person4.setLastName("Lopez");
+    person4.setLastName("Jenifer");
+    person4.setCivility("MME");
+    person4.setAge(20);
 
-    final Person personne5 = new Person();
-    personne5.setNom("Beckham");
-    personne5.setPrenom("David");
-    personne5.setCivilite("MR");
-    personne5.setAge(20);
+    final Person person5 = new Person();
+    person5.setLastName("Beckham");
+    person5.setLastName("David");
+    person5.setCivility("MR");
+    person5.setAge(20);
 
-    final Person personne6 = new Person();
-    personne6.setNom("Cavani");
-    personne6.setPrenom("Edinson");
-    personne6.setCivilite("MR");
-    personne6.setAge(19);
+    final Person person6 = new Person();
+    person6.setLastName("Cavani");
+    person6.setLastName("Edinson");
+    person6.setCivility("MR");
+    person6.setAge(19);
 
     final List<Person> persons = new ArrayList<>();
-    persons.add(personne1);
-    persons.add(personne2);
-    persons.add(personne3);
-    persons.add(personne4);
-    persons.add(personne5);
-    persons.add(personne6);
+    persons.add(person1);
+    persons.add(person2);
+    persons.add(person3);
+    persons.add(person4);
+    persons.add(person5);
+    persons.add(person6);
 
     // Liste de noms des personne ayant un age superieur a 20.
     final List<String> personsNamesWithFilterAge = persons.parallelStream()
-        .filter(p -> p.getAge() > 20).map(Person::getNom).collect(Collectors.toList());
+        .filter(p -> p.getAge() > 20).map(Person::getLastName).collect(Collectors.toList());
 
     System.out.println("Personnes avec age superieur a 20 " + personsNamesWithFilterAge + "\n");
 
     // Construction d'une map de personne groupee par civilite.
     final Map<String, List<Person>> mapPersonsByCivility =
-        persons.stream().collect(Collectors.groupingBy(Person::getCivilite));
+        persons.stream().collect(Collectors.groupingBy(Person::getCivility));
 
     // Test verification existence dans une liste.
     final boolean isPersonsContainsIbrahimovic =
-        persons.stream().anyMatch(p -> p.getNom().equals("Ibrahimovic"));
+        persons.stream().anyMatch(p -> p.getLastName().equals("Ibrahimovic"));
 
     System.out.println(
         "Test si la liste de personne contient une personne avec le Nom = Ibrahimovic. Resultat : "
@@ -88,18 +89,23 @@ public class Test {
 
     // Test si toutes les civilites sont egales a MR.
     final boolean isAllCivilitiesEqualsMR =
-        persons.stream().allMatch(p -> p.getCivilite().equals("MR"));
+        persons.stream().allMatch(p -> p.getCivility().equals("MR"));
 
     System.out.println(
         "Test si les civilites de la liste de personne sont toutes egales a MR. Resultat : "
             + isAllCivilitiesEqualsMR + "\n");
 
     // Test order by par nom.
-    final List<Person> personsOrderedByName = persons.stream()
-        .sorted((p1, p2) -> p1.getNom().compareTo(p2.getNom())).collect(Collectors.toList());
+    final List<Person> personsOrderedByName =
+        persons.stream().sorted((p1, p2) -> p1.getLastName().compareTo(p2.getLastName()))
+            .collect(Collectors.toList());
+
+    // Test order by par nom.
+    final List<Person> personsOrderedByName2 = persons.stream()
+        .sorted(Comparator.comparing(Person::getLastName)).collect(Collectors.toList());
 
     // Test le nombre de personne ayant une civilite egale a MME.
-    final Long numberOfMme = persons.stream().filter(p -> p.getCivilite().equals("MME")).count();
+    final Long numberOfMme = persons.stream().filter(p -> p.getCivility().equals("MME")).count();
 
     System.out.println("Number of person with civility equal MME : " + numberOfMme + "\n");
 
@@ -107,23 +113,22 @@ public class Test {
     final Person personWithMaxAge =
         persons.stream().max((p1, p2) -> p1.getAge().compareTo(p2.getAge())).get();
 
-    System.out.println("Personne avec l'age max : " + personWithMaxAge.getNom());
+    System.out.println("Personne avec l'age max : " + personWithMaxAge.getLastName());
 
     // Autres exemples.
     persons.stream()
-        .filter(p -> p != null && p.getPrenom().toLowerCase().equals("Jenifer".toLowerCase()))
+        .filter(p -> p != null && p.getFirstName().toLowerCase().equals("Jenifer".toLowerCase()))
         .collect(Collectors.toList());
 
     final Boolean isExistJenifer = persons.stream()
-        .anyMatch(p -> p != null && p.getPrenom().toLowerCase().equals("Jenifer".toLowerCase()));
+        .anyMatch(p -> p != null && p.getFirstName().toLowerCase().equals("Jenifer".toLowerCase()));
 
     // Names list.
-    persons.stream().map(Person::getNom).collect(Collectors.toList())
+    persons.stream().map(Person::getLastName).collect(Collectors.toList())
         .forEach(System.out::println);
 
     // Reduce and optional.
-    final Integer reduceTest =
-        persons.stream().map(Person::getAge).reduce(Integer::sum).orElse(0);
+    final Integer reduceTest = persons.stream().map(Person::getAge).reduce(Integer::sum).orElse(0);
 
     // Test forEach.
     persons.stream().filter(p -> p.getAge() > 15).forEach(System.out::println);
@@ -133,14 +138,14 @@ public class Test {
 
     // Find first with if present.
     persons.stream().findAny().ifPresent(p -> System.out
-        .println(new StringJoiner(" : ").add("Optional if present test").add(p.getNom())));
+        .println(new StringJoiner(" : ").add("Optional if present test").add(p.getLastName())));
 
     // Test maps.
     final Map<String, Person> personsAsMap = new HashMap<>();
-    personsAsMap.put(personne1.getNom(), personne1);
-    personsAsMap.put(personne2.getNom(), personne2);
-    personsAsMap.put(personne3.getNom(), personne3);
-    personsAsMap.put(personne4.getNom(), personne4);
+    personsAsMap.put(person1.getLastName(), person1);
+    personsAsMap.put(person2.getLastName(), person2);
+    personsAsMap.put(person3.getLastName(), person3);
+    personsAsMap.put(person4.getLastName(), person4);
 
     // Map entrySet stream.
     personsAsMap.entrySet().stream().filter(entry -> "Ibrahimovic".equals(entry.getKey()))
@@ -149,7 +154,7 @@ public class Test {
     personsAsMap.getOrDefault("Nono", new Person());
 
     personsAsMap.forEach((key, value) -> System.out
-        .println(new StringJoiner(" and ").add(key).add(value.getPrenom())));
+        .println(new StringJoiner(" and ").add(key).add(value.getFirstName())));
 
     // Test collector.
     final Map<Integer, List<Person>> personsByAge =
@@ -161,10 +166,10 @@ public class Test {
 
     final Map<Integer, String> personsStrByAge =
         persons.stream().collect(Collectors.groupingBy(Person::getAge,
-            Collectors.mapping(Person::getPrenom, Collectors.joining(","))));
+            Collectors.mapping(Person::getFirstName, Collectors.joining(","))));
 
     final Map<String, Person> personsToName =
-        persons.stream().collect(Collectors.toMap(Person::getNom, Function.identity()));
+        persons.stream().collect(Collectors.toMap(Person::getLastName, Function.identity()));
 
     System.out.println(personsAsMap);
   }

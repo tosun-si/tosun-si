@@ -32,8 +32,8 @@ public class TestFunction {
 
     // Test optional.
     final Person person = new Person();
-    person.setNom("Zizou");
-    person.setPrenom("Raul");
+    person.setLastName("Zizou");
+    person.setLastName("Raul");
     person.setAge(20);
 
     final Adress adress = new Adress();
@@ -41,9 +41,9 @@ public class TestFunction {
     adress.setZipCode("75015");
 
     // Optional test.
-    final Optional<Person> optinalPersonne = Optional.of(person);
-    final Optional<Adress> optionalAdresse = Optional.of(adress);
-    optinalPersonne.flatMap(a -> optionalAdresse).ifPresent(System.out::println);
+    final Optional<Person> optinalPerson = Optional.of(person);
+    final Optional<Adress> optionalAdress = Optional.of(adress);
+    optinalPerson.flatMap(a -> optionalAdress).ifPresent(System.out::println);
 
     // Unary operation test.
     final UnaryOperator<Integer> unary1 = x -> x + 2;
@@ -91,29 +91,23 @@ public class TestFunction {
     // Chain function and predicate.
     function.compose(predicate::test).andThen(function2).apply("true");
 
-    final Predicate<Person> predicate1 = p -> p.getNom().equals("Zizou");
+    final Predicate<Person> predicate1 = p -> p.getLastName().equals("Zizou");
     final Predicate<Person> predicate2 = p -> p.getAge().equals("20");
 
     final Predicate<Person> finalPredicate = predicate1.and(predicate2);
 
-    final boolean predicateChainResult = TestChainPredicate.of(person)
-        .add(TestChainPredicate.Type.AND, p -> p.getNom().equals("Zizouu"))
-        .add(TestChainPredicate.Type.OR, p -> p.getAge() == 20).build();
-
-    System.out.println("Predicate chain result : " + predicateChainResult);
-
     // Tests compose function with consumer. Behavior parameterization case 1.
-    dispayPersonInfo(person,
-        p -> new StringJoiner(", ").add(p.getNom()).add(p.getPrenom()).toString(),
+    displayPersonInfo(person,
+        p -> new StringJoiner(", ").add(p.getLastName()).add(p.getFirstName()).toString(),
         System.out::println);
 
     // Tests compose function with consumer. Behavior parameterization case 2.
-    dispayPersonInfo(person,
-        p -> new StringJoiner(", ").add(p.getPrenom()).add(p.getAge().toString()).toString(),
+    displayPersonInfo(person,
+        p -> new StringJoiner(", ").add(p.getFirstName()).add(p.getAge().toString()).toString(),
         System.out::println);
   }
 
-  private static void dispayPersonInfo(final Person person,
+  private static void displayPersonInfo(final Person person,
       final Function<Person, String> personToString, final Consumer<String> consumerString) {
     consumerString.accept(new StringJoiner(" : ").add("Compose function with consumer")
         .add(personToString.apply(person)).toString());
