@@ -22,6 +22,12 @@ public final class FluentIterable<T> {
     this.list = list;
   }
 
+  /**
+   * Static factory method that allows to instantiate {@link FluentIterable} from a given list.
+   * 
+   * @param fromList from list
+   * @return current {@link FluentIterable} with from list
+   */
   public static <T> FluentIterable<T> from(final List<T> fromList) {
     return new FluentIterable<>(fromList);
   }
