@@ -29,10 +29,13 @@ public class TestFluentIterable {
     person3.setPrenom("Thiago");
     person3.setAge(22);
 
+    // Build persons list.
     final List<Person> persons = Arrays.asList(person1, person2, person3);
 
-    final List<User> users = (List<User>) FluentIterable.from(persons).filter(p -> p.getAge() > 20)
-        .transform(TestFluentIterable::toUser).toList();
+    // Filters and transforms persons to users.
+    final List<User> users =
+        FluentIterable.from(persons).filter(p -> p.getAge() > 20)
+            .transform(TestFluentIterable::toUser).toList();
 
     System.out.println("User transform result : " + users);
   }

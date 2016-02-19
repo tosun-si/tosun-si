@@ -9,12 +9,11 @@ import java.util.function.Predicate;
  * @author Mazlum
  * @param <T>
  */
-public final class FluentIterable<T, U> {
+public final class FluentIterable<T> {
 
   // Fields.
 
-  private List<?> list;
-  private Class finalTypeList;
+  private List<T> list;
 
   /**
    * Private constructor.
@@ -23,7 +22,7 @@ public final class FluentIterable<T, U> {
     this.list = list;
   }
 
-  public static <T, U> FluentIterable<T, U> from(final List<T> fromList) {
+  public static <T> FluentIterable<T> from(final List<T> fromList) {
     return new FluentIterable<>(fromList);
   }
 
@@ -35,20 +34,16 @@ public final class FluentIterable<T, U> {
    * @param filter current filter
    * @return current {@link FluentIterable}
    */
-  @SuppressWarnings("unchecked")
-  public FluentIterable<T, U> filter(final Predicate<T> filter) {
+  public FluentIterable<T> filter(final Predicate<T> filter) {
 
     final List<T> filteredList = new ArrayList<>();
     list.forEach(t -> {
-      if (filter.test((T) t)) {
-        filteredList.add((T) t);
+      if (filter.test(t)) {
+        filteredList.add(t);
       }
     });
 
     list = filteredList;
-
-    // final Class<T> clazz =(Class<T>) ((ParameterizedType)
-    // getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
     return this;
   }
@@ -59,18 +54,20 @@ public final class FluentIterable<T, U> {
    * @param mapper current mapper function
    * @return current {@link FluentIterable}
    */
-  @SuppressWarnings("unchecked")
-  public FluentIterable<T, U> transform(final Function<T, U> mapper) {
+  public <U> FluentIterable<U> transform(final Function<T, U> mapper) {
 
     final List<U> transformedList = new ArrayList<>();
-    list.forEach(t -> transformedList.add(mapper.apply((T) t)));
+    list.forEach(t -> transformedList.add(mapper.apply(t)));
 
-    list = transformedList;
-
-    return this;
+    return new FluentIterable<>(transformedList);
   }
 
-  public List<?> toList() {
+  /**
+   * Allows to build result list.
+   * 
+   * @return result list
+   */
+  public List<T> toList() {
     return this.list;
   }
 }
