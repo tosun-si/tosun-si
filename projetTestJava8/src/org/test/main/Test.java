@@ -104,6 +104,10 @@ public class Test {
     final List<Person> personsOrderedByName2 = persons.stream()
         .sorted(Comparator.comparing(Person::getLastName)).collect(Collectors.toList());
 
+    // Test order by par nom.
+    final List<Person> personsOrderedByName3 = persons.stream()
+        .sorted(Comparator.comparing(Person::getLastName)).collect(Collectors.toList());
+
     // Test le nombre de personne ayant une civilite egale a MME.
     final Long numberOfMme = persons.stream().filter(p -> p.getCivility().equals("MME")).count();
 

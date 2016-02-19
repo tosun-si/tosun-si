@@ -45,6 +45,12 @@ public class TestFluentIterable {
     System.out.println("User transform with stream result : " + usersWithStream);
   }
 
+  /**
+   * Allows to map {@link Person} to {@link User}.
+   * 
+   * @param person current person
+   * @return {@link User} by given {@link Person}
+   */
   private static User toUser(final Person person) {
     final User user = new User();
     user.setNom(person.getLastName());
