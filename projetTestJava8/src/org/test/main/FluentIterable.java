@@ -76,7 +76,7 @@ public final class FluentIterable<T> {
     list.forEach(t -> transformedList.add(mapper.apply(t)));
 
     // Returns new instance of fluent iterable with transformed list.
-    return new FluentIterable<>(transformedList);
+    return from(transformedList);
   }
 
   // Result build methods.
