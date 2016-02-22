@@ -83,7 +83,7 @@ public final class FluentIterable<T> {
     return from(transformedList);
   }
 
-  // Result build methods.
+  // Result build method.
 
   /**
    * Allows to return result list.
