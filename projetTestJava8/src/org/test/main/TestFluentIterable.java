@@ -5,13 +5,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * Allows to test treatments about fluent iterable.
+ * 
  * @author Mazlum
- *
  */
 public class TestFluentIterable {
 
   /**
-   * @param args
+   * Allows to test treatments about fluent iterable.
+   * 
+   * @param args arguments
    */
   public static void main(String[] args) {
 
@@ -34,12 +37,14 @@ public class TestFluentIterable {
     final List<Person> persons = Arrays.asList(person1, person2, person3);
 
     // Filters and transforms persons to users.
-    final List<User> users = FluentIterable.from(persons).filter(p -> p.getAge() > 20)
-        .transform(TestFluentIterable::toUser).toList();
+    final List<User> users =
+        FluentIterable.from(persons).filter(p -> p.getAge() > 20)
+            .transform(TestFluentIterable::toUser).toList();
 
     // Same operation with stream.
-    final List<User> usersWithStream = persons.stream().filter(p -> p.getAge() > 20)
-        .map(TestFluentIterable::toUser).collect(Collectors.toList());
+    final List<User> usersWithStream =
+        persons.stream().filter(p -> p.getAge() > 20).map(TestFluentIterable::toUser)
+            .collect(Collectors.toList());
 
     System.out.println("User transform result : " + users);
     System.out.println("User transform with stream result : " + usersWithStream);
