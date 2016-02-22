@@ -37,14 +37,12 @@ public class TestFluentIterable {
     final List<Person> persons = Arrays.asList(person1, person2, person3);
 
     // Filters and transforms persons to users, with fluent iterable.
-    final List<User> usersWithFluentIterable =
-        FluentIterable.from(persons).filter(p -> p.getAge() > 20)
-            .transform(TestFluentIterable::toUser).toList();
+    final List<User> usersWithFluentIterable = FluentIterable.from(persons)
+        .filter(p -> p.getAge() > 20).transform(TestFluentIterable::toUser).toList();
 
     // Same operation with stream API.
-    final List<User> usersWithStream =
-        persons.stream().filter(p -> p.getAge() > 20).map(TestFluentIterable::toUser)
-            .collect(Collectors.toList());
+    final List<User> usersWithStream = persons.stream().filter(p -> p.getAge() > 20)
+        .map(TestFluentIterable::toUser).collect(Collectors.toList());
 
     System.out.println("User transform with fluent iterable result : " + usersWithFluentIterable);
     System.out.println("User transform with stream API result : " + usersWithStream);
@@ -58,8 +56,8 @@ public class TestFluentIterable {
    */
   private static User toUser(final Person person) {
     final User user = new User();
-    user.setNom(person.getLastName());
-    user.setPrenom(person.getLastName());
+    user.setLastName(person.getLastName());
+    user.setFirstName(person.getLastName());
     user.setAge(person.getAge());
 
     return user;
