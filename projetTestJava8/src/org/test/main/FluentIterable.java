@@ -2,6 +2,7 @@ package org.test.main;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -34,6 +35,11 @@ public final class FluentIterable<T> {
    * @return current {@link FluentIterable} with from list
    */
   public static <T> FluentIterable<T> from(final List<T> fromList) {
+
+    // Checks if given list is not null.
+    Objects.requireNonNull(fromList);
+
+    // Returns instance of fluent iterable with given list.
     return new FluentIterable<>(fromList);
   }
 
@@ -56,10 +62,8 @@ public final class FluentIterable<T> {
       }
     });
 
-    // Adds filtered list to current list.
-    this.list = filteredList;
-
-    return this;
+    // Returns new instance of fluent iterable with filtered list.
+    return from(filteredList);
   }
 
   /**
@@ -73,7 +77,7 @@ public final class FluentIterable<T> {
 
     // Build transformed list by given function.
     final List<U> transformedList = new ArrayList<>();
-    list.forEach(t -> transformedList.add(mapper.apply(t)));
+    this.list.forEach(t -> transformedList.add(mapper.apply(t)));
 
     // Returns new instance of fluent iterable with transformed list.
     return from(transformedList);
