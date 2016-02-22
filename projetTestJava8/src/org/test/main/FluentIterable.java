@@ -46,7 +46,7 @@ public final class FluentIterable<T> {
    * @param filter current filter
    * @return current {@link FluentIterable}
    */
-  public FluentIterable<T> filter(final Predicate<T> filter) {
+  public FluentIterable<T> filter(final Predicate<? super T> filter) {
 
     // Filters current list by given predicate.
     final List<T> filteredList = new ArrayList<>();
@@ -69,7 +69,7 @@ public final class FluentIterable<T> {
    * @param mapper current mapper function
    * @return current {@link FluentIterable}
    */
-  public <U> FluentIterable<U> transform(final Function<T, U> mapper) {
+  public <U> FluentIterable<U> transform(final Function<? super T, ? extends U> mapper) {
 
     // Build transformed list by given function.
     final List<U> transformedList = new ArrayList<>();
