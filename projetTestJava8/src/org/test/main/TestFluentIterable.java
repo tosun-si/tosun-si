@@ -20,17 +20,17 @@ public class TestFluentIterable {
 
     final Person person1 = new Person();
     person1.setLastName("Zizou");
-    person1.setLastName("Mazizou");
+    person1.setFirstName("Mazizou");
     person1.setAge(20);
 
     final Person person2 = new Person();
     person2.setLastName("Zorro");
-    person2.setLastName("Roronoa");
+    person2.setFirstName("Roronoa");
     person2.setAge(21);
 
     final Person person3 = new Person();
     person3.setLastName("Motta");
-    person3.setLastName("Thiago");
+    person3.setFirstName("Thiago");
     person3.setAge(22);
 
     // Build persons list.
@@ -57,7 +57,7 @@ public class TestFluentIterable {
   private static User toUser(final Person person) {
     final User user = new User();
     user.setLastName(person.getLastName());
-    user.setFirstName(person.getLastName());
+    user.setFirstName(person.getFirstName());
     user.setAge(person.getAge());
 
     return user;
