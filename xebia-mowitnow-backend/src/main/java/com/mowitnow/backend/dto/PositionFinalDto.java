@@ -6,6 +6,8 @@ import com.mowitnow.backend.domain.Mower;
 import com.mowitnow.backend.domain.Position;
 
 /**
+ * Object that contains mower final position and mower that concerned by this position.
+ * 
  * @author Mazlum TOSUN
  */
 public class PositionFinalDto implements Serializable {
