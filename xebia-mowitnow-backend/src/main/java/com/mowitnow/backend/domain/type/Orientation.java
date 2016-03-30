@@ -4,16 +4,22 @@ import com.google.common.collect.ImmutableMap;
 import com.mowitnow.backend.domain.Position;
 
 /**
+ * Contains all possibles mower orientation (N, E, W, S).
+ * 
  * @author Mazlum TOSUN
  */
 public enum Orientation {
+
+  // ----------------------------------------------
+  // Enumeration
+  // ----------------------------------------------
 
   N {
     @Override
     public Position getNewPosition(final Direction direction, final int coordinateX,
         final int coordinateY) {
 
-      // Build and returns a map all possible positions after applying the given direction.
+      // Build and returns a map with all possible positions after applying the given direction.
       return new ImmutableMap.Builder<Direction, Position>()
           .put(Direction.G, new Position(coordinateX, coordinateY, Orientation.W))
           .put(Direction.D, new Position(coordinateX, coordinateY, Orientation.E))
@@ -26,7 +32,7 @@ public enum Orientation {
     public Position getNewPosition(final Direction direction, final int coordinateX,
         final int coordinateY) {
 
-      // Build and returns a map all possible positions after applying the given direction.
+      // Build and returns a map with all possible positions after applying the given direction.
       return new ImmutableMap.Builder<Direction, Position>()
           .put(Direction.G, new Position(coordinateX, coordinateY, Orientation.N))
           .put(Direction.D, new Position(coordinateX, coordinateY, Orientation.S))
@@ -39,7 +45,7 @@ public enum Orientation {
     public Position getNewPosition(final Direction direction, final int coordinateX,
         final int coordinateY) {
 
-      // Build and returns a map all possible positions after applying the given direction.
+      // Build and returns a map with all possible positions after applying the given direction.
       return new ImmutableMap.Builder<Direction, Position>()
           .put(Direction.G, new Position(coordinateX, coordinateY, Orientation.S))
           .put(Direction.D, new Position(coordinateX, coordinateY, Orientation.N))
@@ -52,7 +58,7 @@ public enum Orientation {
     public Position getNewPosition(final Direction direction, final int coordinateX,
         final int coordinateY) {
 
-      // Build and returns a map all possible positions after applying the given direction.
+      // Build and returns a map with all possible positions after applying the given direction.
       return new ImmutableMap.Builder<Direction, Position>()
           .put(Direction.G, new Position(coordinateX, coordinateY, Orientation.E))
           .put(Direction.D, new Position(coordinateX, coordinateY, Orientation.W))

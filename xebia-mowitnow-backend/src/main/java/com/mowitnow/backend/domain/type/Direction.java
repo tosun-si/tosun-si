@@ -1,8 +1,15 @@
 package com.mowitnow.backend.domain.type;
 
 /**
- * @author Mazlum
+ * Contains all possibles mower direction.
+ * 
+ * @author Mazlum TOSUN
  */
 public enum Direction {
+
+  // ----------------------------------------------
+  // Enumerations
+  // ----------------------------------------------
+
   G, D, A
 }

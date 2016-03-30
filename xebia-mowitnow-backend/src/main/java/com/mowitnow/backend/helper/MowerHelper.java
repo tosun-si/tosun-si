@@ -30,21 +30,8 @@ public enum MowerHelper {
   // ----------------------------------------------
 
   /**
-   * Checks if the given x/y coordinates are in surface. A surface is between 0 and 5.
-   * 
-   * @param coordinateX current x coordinate
-   * @param coordinateY current y coordinate
-   * @return {@link Boolean} for result
-   */
-  public boolean checkInSurface(final int coordinateX, final int coordinateY) {
-
-    // Checks if the given x/y coordinates are between 0 and 5, via streams.
-    return IntStream.rangeClosed(0, 5).anyMatch(c -> c == coordinateX)
-        && IntStream.rangeClosed(0, 5).anyMatch(c -> c == coordinateY);
-  }
-
-  /**
-   * Checks if the given x/y coordinates are in surface. A surface is between 0 and 5.
+   * Checks if x/y coordinates of the given {@link Position} are in surface. A surface is between 0
+   * and 5.
    * 
    * @param position current position that contains x, y coordinate
    * @return {@link Boolean} for result
@@ -58,10 +45,10 @@ public enum MowerHelper {
 
   /**
    * Factory method that allows to get final position of the given mower. Final position contains
-   * x/y coordinate and orientation. A result is put in map with [key-value] pair => [MOWER ID-LAST
-   * POSITION].
+   * x/y coordinate and orientation. A result is add in object that contains mower last position and
+   * mower data.
    * 
-   * @return final {@link Position} list in map with [key-value] pair => [MOWER ID-LAST POSITION]
+   * @return {@link PositionFinalDto} object that contains mower last position and mower data
    */
   public PositionFinalDto getMowerFinalPosition(final Mower mower) {
 

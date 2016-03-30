@@ -5,6 +5,8 @@ import java.io.Serializable;
 import com.mowitnow.backend.domain.type.Orientation;
 
 /**
+ * Object that contains mower position data.
+ * 
  * @author Mazlum TOSUN
  */
 public class Position implements Serializable {
@@ -45,7 +47,6 @@ public class Position implements Serializable {
     this.coordinateY = coordinateY;
     this.orientation = orientation;
   }
-
 
   // ----------------------------------------------
   // Getters/setters

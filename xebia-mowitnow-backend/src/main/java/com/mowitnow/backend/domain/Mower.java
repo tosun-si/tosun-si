@@ -6,6 +6,8 @@ import java.util.List;
 import com.mowitnow.backend.domain.type.Direction;
 
 /**
+ * Object that contains mower data.
+ * 
  * @author Mazlum TOSUN
  */
 public class Mower implements Serializable {
@@ -41,7 +43,7 @@ public class Mower implements Serializable {
   }
 
   // ----------------------------------------------
-  // Getters/setters
+  // Getters
   // ----------------------------------------------
 
   public String getId() {
@@ -59,10 +61,6 @@ public class Mower implements Serializable {
   public List<Direction> getDirections() {
     return directions;
   }
-
-  // ----------------------------------------------
-  // Equals and hash code
-  // ----------------------------------------------
 
   /**
    * Builder of {@link Mower}.

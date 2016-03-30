@@ -9,6 +9,11 @@ import com.mowitnow.backend.domain.type.Direction;
 import com.mowitnow.backend.dto.PositionFinalDto;
 import com.mowitnow.backend.helper.MowerHelper;
 
+/**
+ * Mapper that allows to transform object that concerns {@link PositionFinalDto}.
+ * 
+ * @author Mazlum TOSUN
+ */
 public enum PositionFinalMapper {
 
   // Single instance.
@@ -18,7 +23,15 @@ public enum PositionFinalMapper {
   // Public methods
   // ----------------------------------------------
 
-  public PositionFinalDto toPositionFinal(final Mower mower, Direction direction,
+  /**
+   * Allows to build and transform given parameters to final position of {@link Mower}.
+   * 
+   * @param mower mower
+   * @param direction direction
+   * @param mowerPosition mower current position
+   * @return {@link PositionFinalDto} object that contains mower final position and mower data
+   */
+  public PositionFinalDto toPositionFinal(final Mower mower, final Direction direction,
       final Map<String, Position> mowerPosition) {
 
     // Gets last position of mower.

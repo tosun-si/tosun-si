@@ -1,7 +1,6 @@
 package com.mowitnow.backend.service.impl;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mowitnow.backend.domain.Mower;
 import com.mowitnow.backend.domain.Position;
 import com.mowitnow.backend.domain.type.Direction;
@@ -81,29 +79,11 @@ public class MowerServiceImpl implements IMowerService {
   // ----------------------------------------------
 
   @Override
-  public Map<String, Position> getFinalPositions() {
+  public List<PositionFinalDto> getFinalPositions() {
 
     LOGGER.debug("Getting mowers final position...");
 
-    // Gets all mowers.
-    final List<Mower> mowers = this.getMowers();
-
-    final Map<String, Position> finalPositions = Maps.newHashMap();
-    for (Mower mower : mowers) {
-
-      // Calls a methods that allows to get mower final position and puts result this position in
-      // result map.
-      finalPositions.putAll(this.getMowerFinalPosition(mower));
-    }
-
-    return finalPositions;
-  }
-
-  @Override
-  public List<PositionFinalDto> getFinalPositions2() {
-
-    LOGGER.debug("Getting mowers final position...");
-
+    // Transforms mowers to object that contains mower last positions.
     return this.getMowers().stream().map(MowerHelper.INSTANCE::getMowerFinalPosition)
         .collect(Collectors.toList());
   }
@@ -111,41 +91,6 @@ public class MowerServiceImpl implements IMowerService {
   // ----------------------------------------------
   // Private methods
   // ----------------------------------------------
-
-  /**
-   * Gets final position of the given mower. Final position contains x/y coordinate and orientation.
-   * A result is put in map with [key-value] pair => [MOWER ID-LAST POSITION].
-   * 
-   * @return final {@link Position} list in map with [key-value] pair => [MOWER ID-LAST POSITION]
-   */
-  private Map<String, Position> getMowerFinalPosition(final Mower mower) {
-
-    LOGGER.debug("Getting mower [{}] final position...", mower.getName());
-
-    // Puts initial position in result map. Correspond to initial position of mower.
-    final Map<String, Position> finalPosition = Maps.newHashMap();
-    finalPosition.put(mower.getId(), mower.getPosition());
-
-    for (Direction direction : mower.getDirections()) {
-
-      // Gets last position of mower.
-      final Position lastPosition = finalPosition.get(mower.getId());
-
-      // Gets new position by current direction and x/y coordinates.
-      final Position newPosition = lastPosition.getOrientation().getNewPosition(direction,
-          lastPosition.getCoordinateX(), lastPosition.getCoordinateY());
-
-      // We add new position if new x and y coordinates are in surface.
-      if (MowerHelper.INSTANCE.checkInSurface(newPosition.getCoordinateX(),
-          newPosition.getCoordinateY())) {
-
-        // Puts new position in result by current orientation and x, y coordinates.
-        finalPosition.put(mower.getId(), newPosition);
-      }
-    }
-
-    return finalPosition;
-  }
 
   /**
    * Allows to get {@link Mower} list in application.
