@@ -55,7 +55,7 @@ public enum MowerHelper {
     LOGGER.debug("Getting mower [{}] final position...", mower.getName());
 
     // Puts initial position in result map. Correspond to initial position of mower.
-    final Map<String, Position> finalPosition = Maps.newHashMap();
+    final Map<Integer, Position> finalPosition = Maps.newHashMap();
     finalPosition.put(mower.getId(), mower.getPosition());
 
     // Gets last element in stream. It corresponds to position of last direction (final position).

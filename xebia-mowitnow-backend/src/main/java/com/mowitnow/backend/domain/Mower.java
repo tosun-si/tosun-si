@@ -21,7 +21,7 @@ public class Mower implements Serializable {
   // Fields
   // ----------------------------------------------
 
-  private final String id;
+  private final Integer id;
   private final String name;
   private final Position position;
   private final List<Direction> directions;
@@ -46,7 +46,7 @@ public class Mower implements Serializable {
   // Getters
   // ----------------------------------------------
 
-  public String getId() {
+  public Integer getId() {
     return id;
   }
 
@@ -71,7 +71,7 @@ public class Mower implements Serializable {
     // Required fields
     // ----------------------------------------------
 
-    private String id;
+    private Integer id;
 
     // ----------------------------------------------
     // Optional fields
@@ -90,7 +90,7 @@ public class Mower implements Serializable {
      * 
      * @param id mower ID
      */
-    public Builder(String id) {
+    public Builder(Integer id) {
       this.id = id;
     }
 

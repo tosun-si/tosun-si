@@ -57,7 +57,7 @@ public class MowerServiceImpl implements IMowerService {
     final Position position = new Position(1, 2, Orientation.N);
 
     // Initializes mower 1.
-    final Mower mower1 = new Mower.Builder("1").directions(directions).position(position).build();
+    final Mower mower1 = new Mower.Builder(1).directions(directions).position(position).build();
 
     // Build mower 1 directions.
     final List<Direction> directions2 = new ImmutableList.Builder<Direction>().add(Direction.A)
@@ -68,7 +68,7 @@ public class MowerServiceImpl implements IMowerService {
     final Position position2 = new Position(3, 3, Orientation.E);
 
     // Initializes mower 1.
-    final Mower mower2 = new Mower.Builder("2").directions(directions2).position(position2).build();
+    final Mower mower2 = new Mower.Builder(2).directions(directions2).position(position2).build();
 
     // Adds result mower to field in service.
     this.mowers = Lists.newArrayList(mower1, mower2);

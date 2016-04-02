@@ -32,7 +32,7 @@ public enum PositionFinalMapper {
    * @return {@link PositionFinalDto} object that contains mower final position and mower data
    */
   public PositionFinalDto toPositionFinal(final Mower mower, final Direction direction,
-      final Map<String, Position> mowerPosition) {
+      final Map<Integer, Position> mowerPosition) {
 
     // Gets last position of mower.
     final Position lastPosition = mowerPosition.get(mower.getId());
