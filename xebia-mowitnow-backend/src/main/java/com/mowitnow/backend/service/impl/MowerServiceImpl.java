@@ -4,19 +4,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.mowitnow.backend.domain.Mower;
-import com.mowitnow.backend.domain.Position;
-import com.mowitnow.backend.domain.type.Direction;
-import com.mowitnow.backend.domain.type.Orientation;
 import com.mowitnow.backend.dto.PositionFinalDto;
 import com.mowitnow.backend.helper.MowerHelper;
+import com.mowitnow.backend.mapper.MowerMapper;
+import com.mowitnow.backend.service.IApplicationParamService;
 import com.mowitnow.backend.service.IMowerService;
 
 /**
@@ -35,6 +33,9 @@ public class MowerServiceImpl implements IMowerService {
   // Fields
   // ----------------------------------------------
 
+  @Inject
+  private IApplicationParamService applicationParamService;
+
   private List<Mower> mowers;
 
   // ----------------------------------------------
@@ -46,32 +47,12 @@ public class MowerServiceImpl implements IMowerService {
    */
   @PostConstruct
   private void init() {
-    LOGGER.debug("Initializing mowers...");
+    LOGGER.debug("Initializing mowers by application parameters...");
 
-    // Build mower 1 directions.
-    final List<Direction> directions = new ImmutableList.Builder<Direction>().add(Direction.G)
-        .add(Direction.A).add(Direction.G).add(Direction.A).add(Direction.G).add(Direction.A)
-        .add(Direction.G).add(Direction.A).add(Direction.A).build();
-
-    // Build mower 1 position.
-    final Position position = new Position(1, 2, Orientation.N);
-
-    // Initializes mower 1.
-    final Mower mower1 = new Mower.Builder(1).directions(directions).position(position).build();
-
-    // Build mower 1 directions.
-    final List<Direction> directions2 = new ImmutableList.Builder<Direction>().add(Direction.A)
-        .add(Direction.A).add(Direction.D).add(Direction.A).add(Direction.A).add(Direction.D)
-        .add(Direction.A).add(Direction.D).add(Direction.D).add(Direction.A).build();
-
-    // Build mower 1 position.
-    final Position position2 = new Position(3, 3, Orientation.E);
-
-    // Initializes mower 1.
-    final Mower mower2 = new Mower.Builder(2).directions(directions2).position(position2).build();
-
-    // Adds result mower to field in service.
-    this.mowers = Lists.newArrayList(mower1, mower2);
+    // Gets mowers by application parameters (directions, positions).
+    this.mowers =
+        MowerMapper.INSTANCE.paramsToMowers(2, this.applicationParamService.getDirectionsParams(),
+            this.applicationParamService.getPositionParams());
   }
 
   // ----------------------------------------------

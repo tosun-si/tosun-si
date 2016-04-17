@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import com.mowitnow.backend.domain.Mower;
+import com.mowitnow.backend.domain.Position;
 import com.mowitnow.backend.domain.type.Direction;
 
 /**
@@ -41,8 +42,13 @@ public enum MowerMapper {
     final List<List<Direction>> groupedDirections =
         DirectionMapper.INSTANCE.paramsToDirection(directionsParams);
 
-    // Directions are in same order to mower. We add each directions to appropriate mower.
-    mowers.forEach(m -> m.directions(groupedDirections.get(m.build().getId())));
+    // Gets mower positions by positions that given by application parameters.
+    final List<Position> positions = PositionMapper.INSTANCE.paramsToPositions(positionParams);
+
+    // Directions and positions are in same order to mower. We add each directions/positions to
+    // appropriate mower.
+    mowers.forEach(m -> m.directions(groupedDirections.get(m.build().getId()))
+        .position(positions.get(m.build().getId())));
 
     // Returns result mower list with directions and positions. Calls stream mapper with build
     // method of mower.Builder object, in order to return mower object.

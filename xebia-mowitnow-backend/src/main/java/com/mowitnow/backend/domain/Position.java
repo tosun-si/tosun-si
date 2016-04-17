@@ -1,7 +1,10 @@
 package com.mowitnow.backend.domain;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
+import com.google.common.collect.ImmutableMap;
 import com.mowitnow.backend.domain.type.Orientation;
 
 /**
@@ -48,6 +51,23 @@ public class Position implements Serializable {
     this.orientation = orientation;
   }
 
+  /**
+   * Constructor with parameters.
+   * 
+   * @param coordinateX x coordinate
+   * @param coordinateY y coordinate
+   * @param orientation orientation
+   */
+  public Position(final AtomicInteger index, final String value) {
+
+    final ImmutableMap<Integer, Consumer<String>> positions =
+        new ImmutableMap.Builder<Integer, Consumer<String>>().put(1, this::setCoordinateX)
+            .put(2, this::setCoordinateY).put(3, this::setOrientation).build();
+
+
+    positions.get(index.incrementAndGet());
+  }
+
   // ----------------------------------------------
   // Getters/setters
   // ----------------------------------------------
@@ -60,6 +80,10 @@ public class Position implements Serializable {
     this.coordinateX = coordinateX;
   }
 
+  public void setCoordinateX(final String coordinateX) {
+    this.setCoordinateX(Integer.valueOf(coordinateX));
+  }
+
   public int getCoordinateY() {
     return coordinateY;
   }
@@ -68,11 +92,19 @@ public class Position implements Serializable {
     this.coordinateY = coordinateY;
   }
 
+  public void setCoordinateY(final String coordinateY) {
+    this.setCoordinateY(Integer.valueOf(coordinateY));
+  }
+
   public Orientation getOrientation() {
     return orientation;
   }
 
   public void setOrientation(Orientation orientation) {
     this.orientation = orientation;
+  }
+
+  public void setOrientation(final String orientation) {
+    this.setOrientation(Orientation.valueOf(orientation));
   }
 }
