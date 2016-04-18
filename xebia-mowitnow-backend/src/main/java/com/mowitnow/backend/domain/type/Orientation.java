@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mowitnow.backend.domain.Position;
 
 /**
- * Contains all possibles mower orientation (N, E, W, S).
+ * Contains all possibles mower orientations (N, E, W, S).
  * 
  * @author Mazlum TOSUN
  */

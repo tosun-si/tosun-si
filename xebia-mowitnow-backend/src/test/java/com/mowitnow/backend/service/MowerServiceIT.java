@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.fest.assertions.Assertions;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mowitnow.backend.AbstractIT;
 import com.mowitnow.backend.domain.type.Orientation;
 import com.mowitnow.backend.dto.PositionFinalDto;
 
@@ -17,9 +15,7 @@ import com.mowitnow.backend.dto.PositionFinalDto;
  * 
  * @author Mazlum TOSUN
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:config/spring/xebia-mowitnow-backend-context.xml" })
-public class MowerServiceIT {
+public class MowerServiceIT extends AbstractIT {
 
   @Autowired
   private IMowerService mowerService;

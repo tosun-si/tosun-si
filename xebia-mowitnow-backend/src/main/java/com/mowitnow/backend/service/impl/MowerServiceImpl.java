@@ -51,7 +51,7 @@ public class MowerServiceImpl implements IMowerService {
 
     // Gets mowers by application parameters (directions, positions).
     this.mowers =
-        MowerMapper.INSTANCE.paramsToMowers(2, this.applicationParamService.getDirectionsParams(),
+        MowerMapper.INSTANCE.paramsToMowers(this.applicationParamService.getDirectionsParams(),
             this.applicationParamService.getPositionParams());
   }
 

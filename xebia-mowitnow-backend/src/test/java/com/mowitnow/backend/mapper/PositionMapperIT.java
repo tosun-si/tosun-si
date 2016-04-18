@@ -4,20 +4,16 @@ import java.util.List;
 
 import org.fest.assertions.Assertions;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mowitnow.backend.AbstractIT;
 import com.mowitnow.backend.domain.Position;
 
 /**
- * Allows to test business treatments of {@link PositionMapper}.
+ * Allows to test treatments of {@link PositionMapper}.
  * 
  * @author Mazlum TOSUN
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:config/spring/xebia-mowitnow-backend-context.xml" })
-public class PositionMapperIT {
+public class PositionMapperIT extends AbstractIT {
 
   @Test
   public void whenBuildPositionsByGivenParameters_ExpectSuccess() {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import com.mowitnow.backend.constant.MowitnowConstant;
 import com.mowitnow.backend.domain.Mower;
 import com.mowitnow.backend.domain.Position;
 import com.mowitnow.backend.domain.type.Direction;
@@ -26,13 +27,14 @@ public enum MowerMapper {
    * Allows to transform the given applications parameters to {@link Mower} list. These parameters
    * concerns mower number, directions and positions.
    * 
-   * @param mowerNumber mower number
    * @param directionsParams directions parameters
    * @param positionParams position parameters
    * @return {@link Mower} mower list
    */
-  public List<Mower> paramsToMowers(int mowerNumber, final String directionsParams,
-      final String positionParams) {
+  public List<Mower> paramsToMowers(final String directionsParams, final String positionParams) {
+
+    // Gets mower number. This number corresponds to directions or positions number.
+    final int mowerNumber = directionsParams.split(MowitnowConstant.MOWERS_SEPARATOR).length;
 
     // Build and gets mower builders by mower number.
     final List<Mower.Builder> mowers = IntStream.range(0, mowerNumber)

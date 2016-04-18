@@ -1,10 +1,7 @@
 package com.mowitnow.backend.domain;
 
 import java.io.Serializable;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
 
-import com.google.common.collect.ImmutableMap;
 import com.mowitnow.backend.domain.type.Orientation;
 
 /**
@@ -49,23 +46,6 @@ public class Position implements Serializable {
     this.coordinateX = coordinateX;
     this.coordinateY = coordinateY;
     this.orientation = orientation;
-  }
-
-  /**
-   * Constructor with parameters.
-   * 
-   * @param coordinateX x coordinate
-   * @param coordinateY y coordinate
-   * @param orientation orientation
-   */
-  public Position(final AtomicInteger index, final String value) {
-
-    final ImmutableMap<Integer, Consumer<String>> positions =
-        new ImmutableMap.Builder<Integer, Consumer<String>>().put(1, this::setCoordinateX)
-            .put(2, this::setCoordinateY).put(3, this::setOrientation).build();
-
-
-    positions.get(index.incrementAndGet());
   }
 
   // ----------------------------------------------
