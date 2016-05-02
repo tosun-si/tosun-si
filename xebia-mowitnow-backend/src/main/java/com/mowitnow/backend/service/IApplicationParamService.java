@@ -12,12 +12,19 @@ public interface IApplicationParamService {
    * 
    * @return {@link String} directions parameters
    */
-  String getDirectionsParams();
+  String getDirections();
 
   /**
    * Get positions parameters.
    * 
    * @return {@link String} positions parameters
    */
-  String getPositionParams();
+  String getPosition();
+
+  /**
+   * Get expected result positions parameters.
+   * 
+   * @return {@link String} expected result positions parameters
+   */
+  String getExpectedPositions();
 }

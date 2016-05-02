@@ -2,11 +2,13 @@ package com.mowitnow.backend.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.fest.assertions.Assertions;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mowitnow.backend.AbstractIT;
+import com.mowitnow.backend.constant.MowitnowConstant;
 import com.mowitnow.backend.domain.type.Orientation;
 import com.mowitnow.backend.dto.PositionFinalDto;
 
@@ -17,8 +19,10 @@ import com.mowitnow.backend.dto.PositionFinalDto;
  */
 public class MowerServiceIT extends AbstractIT {
 
-  @Autowired
+  @Inject
   private IMowerService mowerService;
+  @Inject
+  private IApplicationParamService applicationParamService;
 
   @Test
   public void whenComputeLastPositionOfExistingMowers_ExpectResultsOk() {
@@ -28,18 +32,31 @@ public class MowerServiceIT extends AbstractIT {
 
     // Asserts.
     Assertions.assertThat(finalPositions).isNotNull().isNotEmpty();
-    final PositionFinalDto position1 = finalPositions.get(0);
-    Assertions.assertThat(position1).isNotNull();
-    Assertions.assertThat(position1.getPosition().getOrientation()).isNotNull()
-        .isEqualTo(Orientation.N);
-    Assertions.assertThat(position1.getPosition().getCoordinateX()).isNotNull().isEqualTo(1);
-    Assertions.assertThat(position1.getPosition().getCoordinateY()).isNotNull().isEqualTo(3);
 
-    final PositionFinalDto position2 = finalPositions.get(1);
-    Assertions.assertThat(position2).isNotNull();
-    Assertions.assertThat(position2.getPosition().getOrientation()).isNotNull()
-        .isEqualTo(Orientation.E);
-    Assertions.assertThat(position2.getPosition().getCoordinateX()).isNotNull().isEqualTo(5);
-    Assertions.assertThat(position2.getPosition().getCoordinateY()).isNotNull().isEqualTo(1);
+    // Gets expected result positions in application parameters file.
+    final String[] expectedPositions =
+        applicationParamService.getExpectedPositions().split(MowitnowConstant.MOWERS_SEPARATOR);
+
+    int index = 0;
+    for (PositionFinalDto finalPosition : finalPositions) {
+
+      // Gets expected positions in separate variables.
+      final String expectedPosition = expectedPositions[index];
+      final Orientation expectedOrientation =
+          Orientation.valueOf(String.valueOf(expectedPosition.charAt(0)));
+      final String expectedCoordinateX = String.valueOf(expectedPosition.charAt(1));
+      final String expectedCoordinateY = String.valueOf(expectedPosition.charAt(2));
+
+      // Asserts.
+      Assertions.assertThat(finalPosition).isNotNull();
+      Assertions.assertThat(finalPosition.getPosition().getOrientation()).isNotNull()
+          .isEqualTo(expectedOrientation);
+      Assertions.assertThat(finalPosition.getPosition().getCoordinateX().toString()).isNotNull()
+          .isEqualTo(expectedCoordinateX);
+      Assertions.assertThat(finalPosition.getPosition().getCoordinateY().toString()).isNotNull()
+          .isEqualTo(expectedCoordinateY);
+
+      index++;
+    }
   }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.mowitnow.backend.constant.MowitnowConstant;
 import com.mowitnow.backend.domain.type.Direction;
 
 /**
@@ -30,8 +31,8 @@ public enum DirectionMapper {
   public List<List<Direction>> paramsToDirection(final String directionsParams) {
 
     // Build and returns result directions list.
-    return Stream.of(directionsParams.split(",")).map(this::toDirection)
-        .collect(Collectors.toList());
+    return Stream.of(directionsParams.split(MowitnowConstant.MOWERS_SEPARATOR))
+        .map(this::toDirection).collect(Collectors.toList());
   }
 
   /**

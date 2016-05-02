@@ -11,7 +11,7 @@ public final class MowitnowConstant {
   // Constants
   // ----------------------------------------------
 
-  public static final String MOWERS_SEPARATOR = "";
+  public static final String MOWERS_SEPARATOR = ",";
 
   // ----------------------------------------------
   // Private constructor

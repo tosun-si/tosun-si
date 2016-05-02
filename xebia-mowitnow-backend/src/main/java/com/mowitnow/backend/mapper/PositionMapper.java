@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.google.common.collect.ImmutableMap;
+import com.mowitnow.backend.constant.MowitnowConstant;
 import com.mowitnow.backend.domain.Position;
 import com.mowitnow.backend.dto.PositionFinalDto;
 
@@ -34,7 +35,8 @@ public enum PositionMapper {
   public List<Position> paramsToPositions(final String positionParams) {
 
     // Transforms the given position parameters to position objects.
-    return Stream.of(positionParams.split(",")).map(this::toPositions).collect(Collectors.toList());
+    return Stream.of(positionParams.split(MowitnowConstant.MOWERS_SEPARATOR)).map(this::toPositions)
+        .collect(Collectors.toList());
   }
 
   // ----------------------------------------------

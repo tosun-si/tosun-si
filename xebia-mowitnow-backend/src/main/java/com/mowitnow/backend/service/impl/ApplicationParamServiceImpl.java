@@ -31,9 +31,11 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
   // ----------------------------------------------
 
   @Value("${mower.positions}")
-  private String positionParams;
+  private String position;
   @Value("${mower.direction}")
-  private String directionsParams;
+  private String directions;
+  @Value("${mower.expected.result}")
+  private String expectedPositions;
 
   // ----------------------------------------------
   // Init
@@ -50,28 +52,34 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
     LOGGER.debug("Initializing application parameters...");
 
     // Checks if mandatory fields are not empty.
-    Optional.ofNullable(this.positionParams).orElseThrow(() -> new ApplicationParamException(
+    Optional.ofNullable(this.position).orElseThrow(() -> new ApplicationParamException(
         "Positions parameters must not be empty in application parameters file"));
-    Optional.ofNullable(this.directionsParams).orElseThrow(() -> new ApplicationParamException(
+    Optional.ofNullable(this.directions).orElseThrow(() -> new ApplicationParamException(
         "Directions parameters must not be empty in application parameters file"));
 
     // Gets a predicate that allows to check if positions length is same to directions length.
-    final Predicate<String> positionsLengthSameDirections = p -> p
-        .split(MowitnowConstant.MOWERS_SEPARATOR).length == this.directionsParams.split(",").length;
+    final Predicate<String> positionsLengthSameDirections =
+        p -> p.split(MowitnowConstant.MOWERS_SEPARATOR).length == this.directions
+            .split(MowitnowConstant.MOWERS_SEPARATOR).length;
 
-    // Via optional apply previous filter, and if after the filter, optional is empty, we return an
+    // Via optional apply previous filter, and if after the filter optional is empty, we return an
     // exception.
-    Optional.of(this.positionParams).filter(positionsLengthSameDirections).orElseThrow(
+    Optional.of(this.position).filter(positionsLengthSameDirections).orElseThrow(
         () -> new ApplicationParamException("Positions length must be same to directions length"));
   }
 
   @Override
-  public String getDirectionsParams() {
-    return this.directionsParams;
+  public String getDirections() {
+    return this.directions;
   }
 
   @Override
-  public String getPositionParams() {
-    return this.positionParams;
+  public String getPosition() {
+    return this.position;
+  }
+
+  @Override
+  public String getExpectedPositions() {
+    return this.expectedPositions;
   }
 }

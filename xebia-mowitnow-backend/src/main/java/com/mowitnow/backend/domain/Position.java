@@ -20,8 +20,8 @@ public class Position implements Serializable {
   // Fields
   // ----------------------------------------------
 
-  private int coordinateX;
-  private int coordinateY;
+  private Integer coordinateX;
+  private Integer coordinateY;
   private Orientation orientation;
 
   // ----------------------------------------------
@@ -52,11 +52,11 @@ public class Position implements Serializable {
   // Getters/setters
   // ----------------------------------------------
 
-  public int getCoordinateX() {
+  public Integer getCoordinateX() {
     return coordinateX;
   }
 
-  public void setCoordinateX(int coordinateX) {
+  public void setCoordinateX(Integer coordinateX) {
     this.coordinateX = coordinateX;
   }
 
@@ -64,11 +64,11 @@ public class Position implements Serializable {
     this.setCoordinateX(Integer.valueOf(coordinateX));
   }
 
-  public int getCoordinateY() {
+  public Integer getCoordinateY() {
     return coordinateY;
   }
 
-  public void setCoordinateY(int coordinateY) {
+  public void setCoordinateY(Integer coordinateY) {
     this.coordinateY = coordinateY;
   }
 
