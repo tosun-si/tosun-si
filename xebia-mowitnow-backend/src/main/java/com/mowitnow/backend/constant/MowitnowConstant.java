@@ -20,7 +20,7 @@ public final class MowitnowConstant {
   /**
    * Empty constructor for prevent instantiation.
    */
-  public MowitnowConstant() {
+  private MowitnowConstant() {
     // An empty constructor.
   }
 }
