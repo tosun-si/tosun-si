@@ -34,7 +34,7 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
   private String position;
   @Value("${mower.directions}")
   private String directions;
-  @Value("${mower.expected.positions}")
+  @Value("${mower.expectedPositions}")
   private String expectedPositions;
 
   // ----------------------------------------------

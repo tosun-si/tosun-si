@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
-import com.mowitnow.backend.AbstractIT;
+import com.mowitnow.backend.AbstractTest;
 import com.mowitnow.backend.constant.MowitnowConstant;
 import com.mowitnow.backend.domain.type.Orientation;
 import com.mowitnow.backend.dto.PositionFinalDto;
@@ -17,7 +17,7 @@ import com.mowitnow.backend.dto.PositionFinalDto;
  * 
  * @author Mazlum TOSUN
  */
-public class MowerServiceIT extends AbstractIT {
+public class MowerServiceTest extends AbstractTest {
 
   @Inject
   private IMowerService mowerService;

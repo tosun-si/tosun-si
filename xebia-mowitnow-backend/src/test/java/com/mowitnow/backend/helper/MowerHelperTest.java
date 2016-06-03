@@ -3,7 +3,7 @@ package com.mowitnow.backend.helper;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
-import com.mowitnow.backend.AbstractIT;
+import com.mowitnow.backend.AbstractTest;
 import com.mowitnow.backend.domain.Position;
 import com.mowitnow.backend.domain.type.Orientation;
 
@@ -12,7 +12,7 @@ import com.mowitnow.backend.domain.type.Orientation;
  * 
  * @author Mazlum TOSUN
  */
-public class MowerHelperIT extends AbstractIT {
+public class MowerHelperTest extends AbstractTest {
 
   @Test
   public void whenMowerHasCoordinatesXAndYInSurface_ExpectReturnTrue() {

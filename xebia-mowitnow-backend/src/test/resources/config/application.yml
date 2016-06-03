@@ -1,0 +1,6 @@
+# Parameters to initialize application.
+
+mower : 
+    positions: 12N,33E
+    directions: GAGAGAGAA,AADAADADDA
+    expectedPositions: N13,E51

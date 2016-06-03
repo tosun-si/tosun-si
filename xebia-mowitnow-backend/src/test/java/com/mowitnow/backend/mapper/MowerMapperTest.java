@@ -5,7 +5,7 @@ import java.util.List;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
-import com.mowitnow.backend.AbstractIT;
+import com.mowitnow.backend.AbstractTest;
 import com.mowitnow.backend.constant.MowitnowConstant;
 import com.mowitnow.backend.domain.Mower;
 
@@ -14,7 +14,7 @@ import com.mowitnow.backend.domain.Mower;
  * 
  * @author Mazlum TOSUN
  */
-public class MowerMapperIT extends AbstractIT {
+public class MowerMapperTest extends AbstractTest {
 
   @Test
   public void whenBuildMowersByGivenParameters_ExpectSuccess() {

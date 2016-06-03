@@ -5,7 +5,7 @@ import java.util.List;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
-import com.mowitnow.backend.AbstractIT;
+import com.mowitnow.backend.AbstractTest;
 import com.mowitnow.backend.domain.Position;
 
 /**
@@ -13,7 +13,7 @@ import com.mowitnow.backend.domain.Position;
  * 
  * @author Mazlum TOSUN
  */
-public class PositionMapperIT extends AbstractIT {
+public class PositionMapperTest extends AbstractTest {
 
   @Test
   public void whenBuildPositionsByGivenParameters_ExpectSuccess() {

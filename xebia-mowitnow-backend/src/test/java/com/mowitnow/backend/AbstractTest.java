@@ -1,7 +1,7 @@
 package com.mowitnow.backend;
 
 import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -10,6 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Mazlum TOSUN
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:config/spring/xebia-mowitnow-backend-context.xml" })
-public abstract class AbstractIT {
+@SpringApplicationConfiguration(Application.class)
+public abstract class AbstractTest {
 }
