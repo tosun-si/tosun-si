@@ -19,10 +19,18 @@ import com.mowitnow.backend.dto.PositionFinalDto;
  */
 public class MowerServiceTest extends AbstractTest {
 
+  // ----------------------------------------------
+  // Fields
+  // ----------------------------------------------
+
   @Inject
   private IMowerService mowerService;
   @Inject
   private IApplicationParamService applicationParamService;
+
+  // ----------------------------------------------
+  // Tests
+  // ----------------------------------------------
 
   @Test
   public void whenComputeLastPositionOfExistingMowers_ExpectResultsOk() {
@@ -49,6 +57,8 @@ public class MowerServiceTest extends AbstractTest {
 
       // Asserts.
       Assertions.assertThat(finalPosition).isNotNull();
+      Assertions.assertThat(finalPosition.getMower()).isNotNull();
+      Assertions.assertThat(finalPosition.getMower().getId()).isNotNull();
       Assertions.assertThat(finalPosition.getPosition().getOrientation()).isNotNull()
           .isEqualTo(expectedOrientation);
       Assertions.assertThat(finalPosition.getPosition().getCoordinateX().toString()).isNotNull()

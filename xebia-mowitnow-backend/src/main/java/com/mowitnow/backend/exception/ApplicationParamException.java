@@ -13,15 +13,8 @@ public class ApplicationParamException extends Exception {
   private static final long serialVersionUID = -2726531034067868568L;
 
   // ----------------------------------------------
-  // Constructors
+  // Constructor
   // ----------------------------------------------
-
-  /**
-   * Constructor without parameter.
-   */
-  public ApplicationParamException() {
-    super();
-  }
 
   /**
    * Constructor with message.

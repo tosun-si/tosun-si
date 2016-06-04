@@ -98,11 +98,6 @@ public class Mower implements Serializable {
     // Builder methods
     // ----------------------------------------------
 
-    public Builder name(final String name) {
-      this.name = name;
-      return this;
-    }
-
     public Builder position(final Position position) {
       this.position = position;
       return this;
@@ -112,7 +107,6 @@ public class Mower implements Serializable {
       this.directions = directions;
       return this;
     }
-
 
     /**
      * Build {@link Mower} by {@link Builder}.

@@ -48,7 +48,7 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
    *         in application.properties file
    */
   @PostConstruct
-  private void init() throws ApplicationParamException {
+  public void init() throws ApplicationParamException {
     LOGGER.debug("Initializing application parameters...");
 
     // Checks if mandatory fields are not empty.
@@ -73,9 +73,22 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
     return this.directions;
   }
 
+  public void setPosition(String position) {
+    this.position = position;
+  }
+
+
+  public void setExpectedPositions(String expectedPositions) {
+    this.expectedPositions = expectedPositions;
+  }
+
   @Override
   public String getPosition() {
     return this.position;
+  }
+
+  public void setDirections(String directions) {
+    this.directions = directions;
   }
 
   @Override
