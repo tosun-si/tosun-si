@@ -22,7 +22,7 @@ public class MowerHelperTest extends AbstractTest {
     final Integer coordinateY = 2;
     final Position position = new Position(coordinateX, coordinateY, Orientation.N);
 
-    // Calls mower mapper by given parameters.
+    // Calls mower helper by given parameters.
     final boolean isInSurface = MowerHelper.INSTANCE.checkInSurface(position);
 
     // Asserts.
@@ -37,7 +37,7 @@ public class MowerHelperTest extends AbstractTest {
     final Integer coordinateY = 2;
     final Position position = new Position(coordinateX, coordinateY, Orientation.N);
 
-    // Calls mower mapper by given parameters.
+    // Calls mower helper by given parameters.
     final boolean isInSurface = MowerHelper.INSTANCE.checkInSurface(position);
 
     // Asserts.
@@ -52,7 +52,7 @@ public class MowerHelperTest extends AbstractTest {
     final Integer coordinateY = -1;
     final Position position = new Position(coordinateX, coordinateY, Orientation.N);
 
-    // Calls mower mapper by given parameters.
+    // Calls mower helper by given parameters.
     final boolean isInSurface = MowerHelper.INSTANCE.checkInSurface(position);
 
     // Asserts.
@@ -67,7 +67,7 @@ public class MowerHelperTest extends AbstractTest {
     final Integer coordinateY = -1;
     final Position position = new Position(coordinateX, coordinateY, Orientation.N);
 
-    // Calls mower mapper by given parameters.
+    // Calls mower helper by given parameters.
     final boolean isInSurface = MowerHelper.INSTANCE.checkInSurface(position);
 
     // Asserts.

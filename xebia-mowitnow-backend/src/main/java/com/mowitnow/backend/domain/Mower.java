@@ -3,6 +3,7 @@ package com.mowitnow.backend.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mowitnow.backend.domain.type.Direction;
 
 /**
@@ -21,10 +22,9 @@ public class Mower implements Serializable {
   // Fields
   // ----------------------------------------------
 
-  private final Integer id;
-  private final String name;
-  private final Position position;
-  private final List<Direction> directions;
+  private Integer id;
+  private Position position;
+  private List<Direction> directions;
 
   // ----------------------------------------------
   // Constructor
@@ -35,86 +35,35 @@ public class Mower implements Serializable {
    * 
    * @param builder current {@link Builder}
    */
-  private Mower(final Builder builder) {
-    this.id = builder.id;
-    this.name = builder.name;
-    this.position = builder.position;
-    this.directions = builder.directions;
+  public Mower(final Integer id) {
+    this.id = id;
   }
 
   // ----------------------------------------------
-  // Getters
+  // Getters/setters
   // ----------------------------------------------
 
   public Integer getId() {
     return id;
   }
 
-  public String getName() {
-    return name;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public Position getPosition() {
     return position;
   }
 
+  public void setPosition(Position position) {
+    this.position = position;
+  }
+
   public List<Direction> getDirections() {
     return directions;
   }
 
-  /**
-   * Builder of {@link Mower}.
-   */
-  public static class Builder {
-
-    // ----------------------------------------------
-    // Required fields
-    // ----------------------------------------------
-
-    private Integer id;
-
-    // ----------------------------------------------
-    // Optional fields
-    // ----------------------------------------------
-
-    private String name;
-    private Position position;
-    private List<Direction> directions;
-
-    // ----------------------------------------------
-    // Constructor
-    // ----------------------------------------------
-
-    /**
-     * Constructor with required fields.
-     * 
-     * @param id mower ID
-     */
-    public Builder(Integer id) {
-      this.id = id;
-    }
-
-    // ----------------------------------------------
-    // Builder methods
-    // ----------------------------------------------
-
-    public Builder position(final Position position) {
-      this.position = position;
-      return this;
-    }
-
-    public Builder directions(final List<Direction> directions) {
-      this.directions = directions;
-      return this;
-    }
-
-    /**
-     * Build {@link Mower} by {@link Builder}.
-     * 
-     * @return mower
-     */
-    public Mower build() {
-      return new Mower(this);
-    }
+  public void setDirections(List<Direction> directions) {
+    this.directions = directions;
   }
 }

@@ -53,7 +53,7 @@ public enum MowerHelper {
    */
   public PositionFinalDto getMowerFinalPosition(final Mower mower) {
 
-    LOGGER.debug("Getting mower [{}] final position...", mower.getName());
+    LOGGER.debug("Getting mower [{}] final position...", mower.getId());
 
     // Puts initial position in result map. Correspond to initial position of mower.
     final Map<Integer, Position> finalPosition = Maps.newHashMap();
