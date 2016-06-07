@@ -1,6 +1,5 @@
-# tosun-si
-TOSUN SI repository
-Description
+
+#Description
 La société MowItNow a décidé de développer une tondeuse à gazon automatique, destinée aux surfaces rectangulaires.
 
 La tondeuse peut être programmée pour parcourir l'intégralité de la surface. La position de la tondeuse est représentée par une combinaison de coordonnées (x,y) et d'une lettre indiquant l'orientation selon la notation cardinale anglaise (N,E,W,S). La pelouse est divisée en grille pour simplifier la navigation.
@@ -19,10 +18,10 @@ Chaque tondeuse se déplace de façon séquentielle, ce qui signifie que la seco
 
 Lorsqu'une tondeuse achève une série d'instruction, elle communique sa position et son orientation.
 
-Objectif
+#Objectif
 Concevoir et écrire un programme s'exécutant sur une JVM ≥ 1.7 ou un serveur node.js, et implémentant la spécification ci-dessus et passant le test ci-après
 
-Test
+#Test
 Le fichier suivant est fourni en entrée : 5 5 1 2 N GAGAGAGAA 3 3 E AADAADADDA
 
 On attend le résultat suivant (position finale des tondeuses) : 1 3 N 5 1 E
