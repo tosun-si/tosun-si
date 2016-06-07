@@ -90,8 +90,4 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
   public String getExpectedPositions() {
     return this.expectedPositions;
   }
-
-  public void setExpectedPositions(String expectedPositions) {
-    this.expectedPositions = expectedPositions;
-  }
 }
