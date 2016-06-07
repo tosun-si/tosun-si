@@ -73,22 +73,9 @@ public class ApplicationParamServiceImpl implements IApplicationParamService {
     return this.directions;
   }
 
-  public void setPosition(String position) {
-    this.position = position;
-  }
-
-
-  public void setExpectedPositions(String expectedPositions) {
-    this.expectedPositions = expectedPositions;
-  }
-
   @Override
   public String getPosition() {
     return this.position;
-  }
-
-  public void setDirections(String directions) {
-    this.directions = directions;
   }
 
   @Override
