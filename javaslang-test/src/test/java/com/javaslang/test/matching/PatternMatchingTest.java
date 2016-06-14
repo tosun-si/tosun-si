@@ -22,14 +22,14 @@ public class PatternMatchingTest {
   public void testWithString() {
 
     // Test from string to get string.
-    final String test2 =
+    final String test =
         Match("tata").of(Case($("toto"), "one"), Case($("tata"), "two"), Case($("titi"), "?"));
-    Assertions.assertThat(test2).isNotNull().isNotEmpty().isEqualTo("two");
+    Assertions.assertThat(test).isNotNull().isNotEmpty().isEqualTo("two");
 
     // Test from string to get string (with IN).
-    final String test3 = Match("tata").of(Case(isIn("toto", "tete"), "one"),
+    final String test2 = Match("tata").of(Case(isIn("toto", "tete"), "one"),
         Case(isIn("roro"), "two"), Case(isIn("tata", "lele"), "roooo"));
-    Assertions.assertThat(test3).isNotNull().isNotEmpty().isEqualTo("roooo");
+    Assertions.assertThat(test2).isNotNull().isNotEmpty().isEqualTo("roooo");
   }
 
   @Test
@@ -44,9 +44,9 @@ public class PatternMatchingTest {
   public void testWithEnum() {
 
     // Test from enum to get string.
-    final String test4 = Match(Car.BMW).of(Case(isIn(Car.MERCEDES, Car.PEUGEOT), "one"),
+    final String test = Match(Car.BMW).of(Case(isIn(Car.MERCEDES, Car.PEUGEOT), "one"),
         Case(isIn(Car.BMW), "two"), Case(isIn(Car.RENAULT), "roooo"));
-    Assertions.assertThat(test4).isNotNull().isNotEmpty().isEqualTo("two");
+    Assertions.assertThat(test).isNotNull().isNotEmpty().isEqualTo("two");
   }
 
   @Test
