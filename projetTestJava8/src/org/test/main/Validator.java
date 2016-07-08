@@ -84,12 +84,16 @@ public class Validator<T> {
    */
   public static void main(String[] args) {
 
-    final Person personne = new Person();
-    personne.setLastName("Zizou");
-    personne.setAge(15);
+    final Person person = new Person();
+    person.setLastName("Zizou");
+    person.setAge(15);
 
-    Validator.of(personne)
-        .validate(Person::getLastName, nom -> nom != null, "Name of user must not be empty")
+    Predicate<Integer> predicate = age -> age > 10;
+
+    Validator.of(person)
+        .validate(Person::getLastName, lastName -> lastName != null,
+            "Name of user must not be empty")
+        .validate(Person::getAge, age -> age > 10, "Age must be greather than 10")
         .validate(Person::getAge, age -> age > 10, "Age must be greather than 10");
   }
 }
