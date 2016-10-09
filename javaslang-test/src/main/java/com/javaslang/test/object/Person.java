@@ -25,7 +25,7 @@ public class Person {
 
   /**
    * Constructor with ID.
-   * 
+   *
    * @param id ID
    */
   public Person(Integer id) {
