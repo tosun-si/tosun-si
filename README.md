@@ -15,7 +15,7 @@ I am also very active in the Google Cloud community:
 - I created Open Source libraries on Apache Beam and Dataflow to help the Beam and Google Cloud communities:
   - Asgarde Java-Kotlin/Simplify error handling with Apache Beam : https://github.com/tosun-si/asgarde
   - Asgarde Python/Simplify error handling with Apache Beam : https://github.com/tosun-si/pasgarde
-  - Midgard Python/More concise and expressive code for Beam with Kotlin : https://github.com/tosun-si/midgard
+  - Midgard/More concise and expressive code for Beam with Kotlin : https://github.com/tosun-si/midgard
 
 - Goal of creating other libraries and side projects in the GCP community
 
