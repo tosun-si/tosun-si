@@ -24,7 +24,7 @@ Groupbees is an IT freelancers group created to give freelancers access to a pro
 
 - Promote the GroupBees label by helping to build a great community of freelancers: good mindset and very good technical skills of our members
 - Animation of the GroupBees Tech community with side projects and organization of monthly BShare sharing talks: https://www.youtube.com/channel/UCARW8PvH1T0yAkTiPbGLeiA
-- Expertise interventions with customers for implementation on Data and Google Cloud topics
+- Delivering Customer Value with recognized expertise on Google Cloud Data ecosystem
 
 ### 🔗 Let's Connect!
 
