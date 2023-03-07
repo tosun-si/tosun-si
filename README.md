@@ -23,7 +23,7 @@ Co-founder and Head of Data & Cloud of GroupBees, a group of freelances consulta
 
 - Promote the GroupBees label by helping to build a great community of freelancers: good mindset and very good technical skills of our members
 - Animation of the GroupBees Tech community with side projects and organization of monthly BShare sharing talks: https://www.youtube.com/channel/UCARW8PvH1T0yAkTiPbGLeiA
-- Expertise interventions with clients for implementation on Data and Google Cloud topics
+- Expertise interventions with customers for implementation on Data and Google Cloud topics
 
 ### 🔗 Let's Connect!
 
