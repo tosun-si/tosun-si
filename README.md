@@ -1,4 +1,6 @@
-# About Mazlum 👋
+![gcp-groupbees](groupbees_social_media_bande.png)
+
+# About me 👋
 
 Passionate about tech and Data, Craftsman at heart and functional programming lover, I work on long missions or specialized expertise with many customers.
 
@@ -23,10 +25,12 @@ Co-founder and Head of Data & Cloud of GroupBees, a group of freelances consulta
 - Animation of the GroupBees Tech community with side projects and organization of monthly BShare sharing talks: https://www.youtube.com/channel/UCARW8PvH1T0yAkTiPbGLeiA
 - Expertise interventions with clients for implementation on Data and Google Cloud topics
 
-🔗 Let's Connect!
+### 🔗 Let's Connect!
 
-https://medium.com/@mazlum.tosun
+<a href="https://twitter.com/MazlumTosun3" target="_blank"><img alt="Twitter" src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" /></a>
 
-https://twitter.com/MazlumTosun3
+<a href="https://medium.com/@mazlum.tosun" target="_blank"><img alt="Medium" src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" /></a>
 
-https://twitter.com/MazlumTosun3
+<a href="https://www.linkedin.com/in/mazlum-tosun-900b1812/" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+
+<a href="https://stackoverflow.com/users/9261558/mazlum-tosun" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/stack%20overflow-FE7A16?logo=stack-overflow&logoColor=white&style=for-the-badge" /></a>
