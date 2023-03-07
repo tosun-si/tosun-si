@@ -19,7 +19,8 @@ I am also very active in the Google Cloud community:
 
 - Goal of creating other libraries and side projects in the GCP community
 
-Co-founder and Head of Data & Cloud of GroupBees, a group of freelances consultants intended to give them access to a framework, to a community based on sharing in order to ensure them a rise in skills as well as better employability:
+Co-founder and Head of Data & Cloud at GroupBees. 
+Groupbees is an IT freelancers group created to give freelancers access to a proven framework and a powerful community based on knowledge sharing in order to upskill them as well as give them better employability:
 
 - Promote the GroupBees label by helping to build a great community of freelancers: good mindset and very good technical skills of our members
 - Animation of the GroupBees Tech community with side projects and organization of monthly BShare sharing talks: https://www.youtube.com/channel/UCARW8PvH1T0yAkTiPbGLeiA
