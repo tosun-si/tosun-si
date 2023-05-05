@@ -12,6 +12,7 @@ I explore issues related to Data, Infra As Code, DevOps automation (CI/CD) and b
 I am also very active in the Google Cloud community:
 - I help the GCP community on Stackoverflow: https://stackoverflow.com/users/9261558/mazlum-tosun
 - I write Google Cloud articles on Medium: https://medium.com/@mazlum.tosun
+- I share videos on my GCP Youtube Channel : https://www.youtube.com/@GCPLearning-ce9bg
 - I created Open Source libraries on Apache Beam and Dataflow to help the Beam and Google Cloud communities:
   - Asgarde Java-Kotlin/Simplify error handling with Apache Beam : https://github.com/tosun-si/asgarde
   - Asgarde Python/Simplify error handling with Apache Beam : https://github.com/tosun-si/pasgarde
@@ -33,5 +34,7 @@ Groupbees is an IT freelancers group created to give freelancers access to a pro
 <a href="https://medium.com/@mazlum.tosun" target="_blank"><img alt="Medium" src="https://img.shields.io/badge/medium-%2312100E.svg?&style=for-the-badge&logo=medium&logoColor=white" /></a>
 
 <a href="https://www.linkedin.com/in/mazlum-tosun-900b1812/" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+
+<a href="https://www.youtube.com/@GCPLearning-ce9bg" target="_blank"><img alt="Youtube GCP Channel" src="https://img.shields.io/youtube/channel/subscribers/UCPnHZ14R5oF8LQAc7f4mKNg?style=social" /></a>
 
 <a href="https://stackoverflow.com/users/9261558/mazlum-tosun" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/stack%20overflow-FE7A16?logo=stack-overflow&logoColor=white&style=for-the-badge" /></a>
