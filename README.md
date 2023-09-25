@@ -2,6 +2,8 @@
 
 # About me 👋
 
+Google Developer Expert on Google Cloud.
+
 Passionate about tech and Data, Craftsman at heart and functional programming lover, I work on long missions or specialized expertise with many customers.
 
 Tech Lead Full-Stack in the past, I set up architectures (Hexagonal, Domain Driven Design) and helped teams to improve their code quality and propose best practices.
