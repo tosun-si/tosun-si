@@ -2,7 +2,7 @@
 
 # About me 👋
 
-Google Developer Expert on Google Cloud.
+Google Developer Expert on Google Cloud and Docker Captain 🐳
 
 Passionate about tech and Data, Craftsman at heart and functional programming lover, I work on long missions or specialized expertise with many customers.
 
